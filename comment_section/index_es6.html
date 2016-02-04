@@ -1,0 +1,64 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Some Cool Comment App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script type="text/babel">
+      class CommentList extends React.Component{
+        render() {
+          return( 
+            <div className="commentList">
+              <Comment author="Mr.Tony">This is the best comment app ever.</Comment>
+              <Comment author="Obamha">Love this thing.</Comment>
+            </div>
+            );
+        }
+      }
+      class CommentForm extends React.Component{
+        render() {
+          return (
+            <div className="commentForm">
+              Test Test I'm a CommentForm.
+            </div>
+          );
+        }
+      }
+      class Comment extends React.Component{
+        render() {
+          return(
+             <div className="comment">
+               <h2 className="commentAuthor">
+                {this.props.author}
+               </h2>
+               {this.props.children}
+             </div>
+            );
+        }
+      }
+      class CommentBox extends React.Component{
+        render (){
+          return (
+              <div className="commentBox">
+                  <h1>Comments</h1>
+                  <CommentList />
+                  <CommentForm />
+              </div>
+            );
+        }
+      }
+      ReactDOM.render(
+          <CommentBox />,
+          document.getElementById('content')
+      );
+    </script>
+  </body>
+</html>
